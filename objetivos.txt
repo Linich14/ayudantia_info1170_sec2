@@ -1,0 +1,9 @@
+para el miercolesssssssss
+
+crear la aplicacion de producto
+crear la ruta 
+crear la vista
+
+
+dejar listos los metodos y html
+eliminar,actualizar,obtener by id
