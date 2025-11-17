@@ -1,16 +1,15 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Detalle de Productos</title>
-</head>
-<body>
-    <h1>Detalle de Producto</h1>
-    <p>
-        id: {{producto.id}}
-    </p>
-    <p>nombre: {{producto.nombre}}</p>
-    <p>descrip: {{producto.descripcion}}</p>
-    <p>cant: {{producto.cantidad}}</p>
-</body>
-</html>
+{% extends 'productos/base.html' %}
+{% block title %}Detalle: {{ producto.nombre }}{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">{{ producto.nombre }}</h5>
+        <p class="card-text"><strong>ID:</strong> {{ producto.id }}</p>
+        <p class="card-text"><strong>Descripción:</strong> {{ producto.descripcion }}</p>
+        <p class="card-text"><strong>Cantidad:</strong> {{ producto.cantidad }}</p>
+        <a href="{% url 'producto_actualizar' producto.id %}" class="btn btn-primary">Editar</a>
+        <a href="{% url 'lista_productos' %}" class="btn btn-secondary ms-2">Volver a la lista</a>
+    </div>
+</div>
+{% endblock %}

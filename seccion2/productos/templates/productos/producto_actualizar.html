@@ -1,20 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actualizar Producto</title>
-</head>
-<body>
-    <form action="/productos/actualizar/{{ producto.id }}" method="post">
-        {% csrf_token %}
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre" value="{{ producto.nombre }}"><br><br>
-        <label for="descripcion">Descripción:</label>
-        <input type="text" id="descripcion" name="descripcion" value="{{ producto.descripcion }}"><br><br>
-        <label for="cantidad">Cantidad:</label>
-        <input type="number" id="cantidad" name="cantidad" value="{{ producto.cantidad }}"><br><br>
-        <input type="submit" value="Actualizar">
-    </form>
-</body>
-</html>
+{% extends 'productos/base.html' %}
+{% block title %}Actualizar Producto{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Actualizar Producto</h5>
+        <form action="{% url 'producto_actualizar' producto.id %}" method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" value="{{ producto.nombre }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="descripcion" class="form-label">Descripción</label>
+                <input type="text" class="form-control" id="descripcion" name="descripcion" value="{{ producto.descripcion }}">
+            </div>
+            <div class="mb-3">
+                <label for="cantidad" class="form-label">Cantidad</label>
+                <input type="number" class="form-control" id="cantidad" name="cantidad" value="{{ producto.cantidad }}" min="0">
+            </div>
+            <button type="submit" class="btn btn-primary">Actualizar</button>
+            <a href="{% url 'producto_mostrar' producto.id %}" class="btn btn-secondary ms-2">Volver</a>
+        </form>
+    </div>
+</div>
+{% endblock %}
